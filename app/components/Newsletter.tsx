@@ -76,7 +76,7 @@ export default function Newsletter() {
       ">
 
         <img
-          src="/assets/p16.png"
+          src="/assets/a16.png"
           alt=""
           className="
             w-full
