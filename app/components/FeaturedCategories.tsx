@@ -1,0 +1,219 @@
+// components/FeaturedCategories.tsx
+
+"use client"
+
+// Static product data for the luxury fashion brand
+export const PRODUCTS = [
+  { id: 'p1', name: 'Royal Ivory Sherwani', category: "Men's Collection", collection: 'Wedding', price: 84500, originalPrice: 95000, rating: 4.9, reviews: 124, image: 'https://images.unsplash.com/photo-1681717055630-c62333c22fec?w=900', images: ['https://images.unsplash.com/photo-1681717055630-c62333c22fec?w=1200','https://images.unsplash.com/photo-1760080838961-4208536db385?w=1200','https://images.unsplash.com/photo-1534217466718-ef4950786e24?w=1200'], description: 'A masterpiece of regal craftsmanship — hand-embroidered ivory sherwani with antique zardozi and pearl detailing. Tailored from finest raw silk.', material: 'Pure Raw Silk, Velvet Lining', care: 'Dry clean only. Store in muslin cloth.', sizes: ['38','40','42','44','46'], colors: ['Ivory','Gold','Maroon'], tag: 'Bestseller' },
+  { id: 'p2', name: 'Heritage Embroidered Kurta', category: "Men's Collection", collection: 'Festive', price: 24500, originalPrice: 28000, rating: 4.8, reviews: 89, image: 'https://images.unsplash.com/photo-1760080838961-4208536db385?w=900', images: ['https://images.unsplash.com/photo-1760080838961-4208536db385?w=1200','https://images.unsplash.com/photo-1534217466718-ef4950786e24?w=1200'], description: 'An understated statement of elegance. Cotton-silk kurta with delicate chikankari and a crepe inner.', material: 'Cotton-Silk Blend', care: 'Dry clean recommended.', sizes: ['S','M','L','XL','XXL'], colors: ['Cream','Onyx','Saffron'], tag: 'New' },
+  { id: 'p3', name: 'Bespoke Midnight Blazer', category: "Men's Collection", collection: 'Luxury Essentials', price: 38900, originalPrice: 45000, rating: 4.7, reviews: 56, image: 'https://images.unsplash.com/photo-1534217466718-ef4950786e24?w=900', images: ['https://images.unsplash.com/photo-1534217466718-ef4950786e24?w=1200','https://images.unsplash.com/photo-1610047402714-307d99a677db?w=1200'], description: 'A sculpted Italian-cut blazer in midnight wool with grosgrain lapels. Worn solo or layered with our heritage kurta.', material: 'Italian Wool, Silk Lining', care: 'Dry clean only.', sizes: ['38','40','42','44'], colors: ['Midnight','Charcoal'], tag: 'Limited' },
+  { id: 'p4', name: 'Banarasi Silk Shirt', category: "Men's Collection", collection: 'Luxury Essentials', price: 14500, originalPrice: 17000, rating: 4.6, reviews: 73, image: 'https://images.unsplash.com/photo-1610047402714-307d99a677db?w=900', images: ['https://images.unsplash.com/photo-1610047402714-307d99a677db?w=1200'], description: 'A modern silhouette woven on a centuries-old loom. Banarasi silk shirt with mother-of-pearl buttons.', material: '100% Banarasi Silk', care: 'Dry clean only.', sizes: ['S','M','L','XL'], colors: ['Champagne','Onyx','Bordeaux'], tag: '' },
+  { id: 'p5', name: 'Quilted Heritage Jacket', category: "Men's Collection", collection: 'Luxury Essentials', price: 32500, originalPrice: 36000, rating: 4.8, reviews: 41, image: 'https://images.unsplash.com/photo-1503160865267-af4660ce7bf2?w=900', images: ['https://images.unsplash.com/photo-1503160865267-af4660ce7bf2?w=1200'], description: 'Hand-quilted jacket inspired by Rajasthani royalty — bandhgala collar with brass buttons.', material: 'Quilted Brocade, Cotton Lining', care: 'Dry clean only.', sizes: ['38','40','42','44','46'], colors: ['Rust','Forest','Indigo'], tag: '' },
+  { id: 'p6', name: 'Maharani Bridal Lehenga', category: "Women's Collection", collection: 'Wedding', price: 185000, originalPrice: 210000, rating: 5.0, reviews: 67, image: 'https://images.unsplash.com/photo-1600685890506-593fdf55949b?w=900', images: ['https://images.unsplash.com/photo-1600685890506-593fdf55949b?w=1200','https://images.unsplash.com/flagged/photo-1551854716-8b811be39e7e?w=1200','https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=1200'], description: 'The pinnacle of our atelier — a hand-embroidered bridal lehenga with 2,400 hours of zardozi craftsmanship.', material: 'Raw Silk, Real Zari, Glass Beads', care: 'Professional dry clean only. Store flat in muslin.', sizes: ['XS','S','M','L','XL'], colors: ['Crimson','Blush','Emerald'], tag: 'Couture' },
+  { id: 'p7', name: 'Festive Anarkali', category: "Women's Collection", collection: 'Festive', price: 56500, originalPrice: 65000, rating: 4.9, reviews: 102, image: 'https://images.unsplash.com/flagged/photo-1551854716-8b811be39e7e?w=900', images: ['https://images.unsplash.com/flagged/photo-1551854716-8b811be39e7e?w=1200','https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=1200'], description: 'A floor-sweeping anarkali in georgette with intricate gota-patti work.', material: 'Georgette, Silk Lining', care: 'Dry clean only.', sizes: ['XS','S','M','L','XL'], colors: ['Sapphire','Rose','Gold'], tag: 'Bestseller' },
+  { id: 'p8', name: 'Silk Saree — Ivory Gold', category: "Women's Collection", collection: 'Luxury Essentials', price: 42500, originalPrice: 48000, rating: 4.8, reviews: 88, image: 'https://images.unsplash.com/photo-1610047614301-13c63f00c032?w=900', images: ['https://images.unsplash.com/photo-1610047614301-13c63f00c032?w=1200'], description: 'Pure Kanjeevaram silk saree woven with real gold zari. A timeless heirloom piece.', material: 'Kanjeevaram Silk, Real Zari', care: 'Dry clean only.', sizes: ['Free Size'], colors: ['Ivory-Gold','Maroon-Gold','Teal-Gold'], tag: '' },
+  { id: 'p9', name: 'Handcrafted Polki Set', category: 'Accessories', collection: 'Wedding', price: 96500, originalPrice: 110000, rating: 5.0, reviews: 34, image: 'https://images.unsplash.com/photo-1571908599407-cdb918ed83bf?w=900', images: ['https://images.unsplash.com/photo-1571908599407-cdb918ed83bf?w=1200'], description: 'Heritage polki necklace and earring set, set in 22k gold-plated silver.', material: '22k Gold Plated Silver, Polki Stones', care: 'Store in velvet pouch.', sizes: ['One Size'], colors: ['Gold'], tag: 'Limited' },
+  { id: 'p10', name: 'Embroidered Mojari', category: 'Accessories', collection: 'Festive', price: 8500, originalPrice: 10000, rating: 4.7, reviews: 56, image: 'https://images.unsplash.com/photo-1629118477133-b8b1499f2b8a?w=900', images: ['https://images.unsplash.com/photo-1629118477133-b8b1499f2b8a?w=1200'], description: 'Hand-stitched mojari with zardozi embroidery — comfort meets tradition.', material: 'Leather, Silk Embroidery', care: 'Wipe with dry cloth.', sizes: ['UK 6','UK 7','UK 8','UK 9','UK 10'], colors: ['Maroon','Gold','Black'], tag: '' },
+  { id: 'p11', name: 'Zardozi Clutch', category: 'Accessories', collection: 'Festive', price: 12500, originalPrice: 15000, rating: 4.8, reviews: 42, image: 'https://images.unsplash.com/photo-1610047614301-13c63f00c032?w=900', images: ['https://images.unsplash.com/photo-1610047614301-13c63f00c032?w=1200'], description: 'A statement evening clutch hand-embroidered with antique zardozi.', material: 'Silk, Antique Zardozi', care: 'Handle with care.', sizes: ['One Size'], colors: ['Gold','Silver','Bronze'], tag: 'New' },
+  { id: 'p12', name: 'The Couture Lehenga — Emerald', category: "Women's Collection", collection: 'Wedding', price: 225000, originalPrice: 265000, rating: 4.9, reviews: 28, image: 'https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=900', images: ['https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=1200'], description: 'Emerald velvet lehenga with real-zari and crystal embroidery. Made-to-measure couture.', material: 'Velvet, Real Zari, Crystals', care: 'Dry clean only.', sizes: ['XS','S','M','L','XL'], colors: ['Emerald','Ruby','Sapphire'], tag: 'Couture' }
+];
+
+export const CATEGORIES = [
+  { name: "Men's Collection", image: 'https://images.unsplash.com/photo-1681717055630-c62333c22fec?w=1200', tagline: 'Royal silhouettes' },
+  { name: "Royal Atire", image: 'https://images.unsplash.com/photo-1600685890506-593fdf55949b?w=1200', tagline: 'Timeless grace' },
+  { name: 'Wedding Collection', image: 'https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=1200', tagline: 'For the most sacred day' },
+  { name: 'Festive Wear', image: 'https://images.unsplash.com/flagged/photo-1551854716-8b811be39e7e?w=1200', tagline: 'Celebrate in heritage' },
+  { name: 'Accessories', image: 'https://images.unsplash.com/photo-1571908599407-cdb918ed83bf?w=1200', tagline: 'The finishing touch' },
+  { name: 'New Arrivals', image: 'https://images.unsplash.com/photo-1760080838961-4208536db385?w=1200', tagline: 'Just unveiled' }
+];
+
+export const COLLECTION_BANNERS = [
+  { title: 'The Wedding Edit', subtitle: 'Heirlooms in the making', image: 'https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=1600' },
+  { title: 'Festive Collection', subtitle: 'Light. Lustre. Legacy.', image: 'https://images.unsplash.com/flagged/photo-1551854716-8b811be39e7e?w=1600' },
+  { title: 'Luxury Essentials', subtitle: 'Timeless silhouettes', image: 'https://images.unsplash.com/photo-1534217466718-ef4950786e24?w=1600' },
+  { title: 'Limited Edition', subtitle: 'Numbered & signed', image: 'https://images.unsplash.com/photo-1503160865267-af4660ce7bf2?w=1600' }
+];
+
+export const INSTAGRAM_GALLERY = [
+  'https://images.unsplash.com/photo-1681717055630-c62333c22fec?w=600',
+  'https://images.unsplash.com/photo-1600685890506-593fdf55949b?w=600',
+  'https://images.unsplash.com/photo-1760080838961-4208536db385?w=600',
+  'https://images.unsplash.com/flagged/photo-1551854716-8b811be39e7e?w=600',
+  'https://images.unsplash.com/photo-1534217466718-ef4950786e24?w=600',
+  'https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=600',
+  'https://images.unsplash.com/photo-1610047614301-13c63f00c032?w=600',
+  'https://images.unsplash.com/photo-1571908599407-cdb918ed83bf?w=600'
+];
+
+
+
+
+import { motion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
+import SectionHeading from "./SectionHeading"
+
+
+type Category = {
+  name: string
+  image: string
+  tagline: string
+}
+
+type FeaturedCategoriesProps = {
+  categories: Category[]
+  onCategory: (name: string) => void
+}
+
+export default function FeaturedCategories({
+  categories,
+  onCategory,
+}: FeaturedCategoriesProps) {
+  return (
+   <section className="relative py-24 md:py-32 w-full mx-auto px-6 overflow-hidden rounded-2xl">
+  {/* The Background Image Component Context */}
+  <img
+    src="https://images.pexels.com/photos/9890206/pexels-photo-9890206.jpeg"
+    alt="Atelier Maharani collection"
+    className="absolute inset-0 w-full h-full object-cover -z-10 object-center"
+  />
+
+  {/* Optional Black Tint Overlay for Readability */}
+  <div className="absolute inset-0 bg-black/40 -z-10" />
+
+      <SectionHeading
+        eyebrow="Curated Collections"
+        title="The HHS"
+        sub="Six worlds of artisanship, each a celebration of craft."
+      />
+
+
+      <div className="
+        grid
+        grid-cols-1
+        md:grid-cols-2
+        lg:grid-cols-3
+        gap-2
+        md:gap-4
+      ">
+
+        {categories.map((cat, i) => (
+
+          <motion.button
+            key={cat.name}
+
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+
+            viewport={{
+              once: true,
+            }}
+
+            transition={{
+              duration: 0.8,
+              delay: i * 0.08,
+            }}
+
+            onClick={() => onCategory(cat.name)}
+
+            className="
+              relative
+              rounded-4xl overflow-hidden
+              aspect-[4/5]
+              group
+              text-left
+            "
+          >
+
+            <img
+              src={cat.image}
+              alt={cat.name}
+              className="
+                w-full
+                h-full
+                object-cover
+                transition-transform
+                duration-700
+                group-hover:scale-105
+              "
+            />
+
+
+            <div className="
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-black/80
+              via-black/20
+              to-transparent
+              group-hover:from-black/90
+              transition-all
+            "/>
+
+
+            <div className="
+              absolute
+              inset-x-0
+              bottom-0
+              p-8
+              text-[#F8F5EF]
+            ">
+
+              <p className="
+                text-[10px]
+                tracking-[0.35em]
+                uppercase
+                text-[#C9A227]
+                mb-3
+              ">
+                {cat.tagline}
+              </p>
+
+
+              <h3 className="
+                font-serif-display
+                text-3xl
+                md:text-4xl
+                mb-4
+              ">
+                {cat.name}
+              </h3>
+
+
+              <span className="
+                inline-flex
+                items-center
+                text-[11px]
+                tracking-[0.25em]
+                uppercase
+                border-b
+                border-[#C9A227]
+                pb-1
+              ">
+                Discover
+
+                <ArrowRight className="
+                  ml-2
+                  w-3
+                  h-3
+                "/>
+
+              </span>
+
+            </div>
+
+          </motion.button>
+
+        ))}
+
+      </div>
+
+    </section>
+  )
+}
